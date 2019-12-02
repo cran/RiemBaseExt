@@ -8,7 +8,7 @@
   this.version = packageVersion("RiemBaseExt")
   
   ## Print on Screen
-  packageStartupMessage("-------------------------------------------------------------")
+  packageStartupMessage("**---------------------------------------------------------**")
   packageStartupMessage("** RiemBaseExt ")
   packageStartupMessage("**  - Extension to 'RiemBase' Package")
   packageStartupMessage("** ")
@@ -16,7 +16,7 @@
   packageStartupMessage("** Maintainer : Kisung You (kyoustat@gmail.com)")
   packageStartupMessage("**")
   packageStartupMessage("** Please share any bugs or suggestions with the maintainer.")
-  packageStartupMessage("-------------------------------------------------------------")
+  packageStartupMessage("**---------------------------------------------------------**")
 }
 
 .onUnload <- function(libpath) {

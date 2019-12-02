@@ -8,7 +8,6 @@
 #' @import Rdpack
 #' @importFrom cluster pam
 #' @importFrom dbscan dbscan
-#' @importFrom TDA ripsDiag wasserstein
 #' @importFrom energy eqdist.etest
 #' @importFrom fastcluster hclust
 #' @importFrom kernlab specc
