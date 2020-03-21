@@ -12,7 +12,7 @@ rstat.frechet(
 )
 }
 \arguments{
-\item{input}{a S3 object of \code{riemdata} class. See \code{\link{riemfactory}} for more details.}
+\item{input}{a S3 object of \code{riemdata} class. See \code{\link[RiemBase]{riemfactory}} for more details.}
 
 \item{type}{type of distance, either \code{"intrinsic"} or \code{"extrinsic"}.}
 

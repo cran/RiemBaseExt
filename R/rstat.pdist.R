@@ -1,0 +1,58 @@
+#' Pairwise Distance of Data on Manifolds
+#' 
+#' For two points \eqn{x,y \in \mathcal{M}}, two modes of distances are available; \emph{intrinsic} for geodesic distance 
+#' on the manifold and \emph{extrinsic} for standard norm after equivariant embedding into Euclidean space.
+#' 
+#' @param input a S3 object of \code{riemdata} class. See \code{\link[RiemBase]{riemfactory}} for more details.
+#' @param type type of distance, either \code{"intrinsic"} or \code{"extrinsic"}.
+#' @param as.dist logical; if \code{TRUE}, it returns \code{dist} object, else it returns a symmetric matrix.
+#' 
+#' @return a S3 \code{dist} object or symmetric matrix of pairwise distances according to \code{type} parameter. 
+#' 
+#' @examples
+#' ### Generate 50 data points on Sphere S^2 near (0,0,1).
+#' ndata = 50
+#' theta = seq(from=-0.99,to=0.99,length.out=ndata)*pi
+#' tmpx  = cos(theta) + rnorm(ndata,sd=0.1)
+#' tmpy  = sin(theta) + rnorm(ndata,sd=0.1)
+#' 
+#' ### Wrap it as 'riemdata' class
+#' data  = list()
+#' for (i in 1:ndata){
+#'   tgt = c(tmpx[i],tmpy[i],1)
+#'   data[[i]] = tgt/sqrt(sum(tgt^2)) # project onto Sphere
+#' }
+#' spdata = RiemBase::riemfactory(data, name="sphere")
+#' 
+#' ### Compute Two Types of Distances and Visualize
+#' dist.int = rstat.pdist(spdata, type="intrinsic", as.dist=FALSE)
+#' dist.ext = rstat.pdist(spdata, type="extrinsic", as.dist=FALSE)
+#' 
+#' ### Visualize
+#' opar <- par(no.readonly=TRUE)
+#' par(mfrow=c(1,2))
+#' image(dist.int, main="intrinsic")
+#' image(dist.ext, main="extrinsic")
+#' par(opar)
+#' 
+#' @export
+rstat.pdist <- function(input, type=c("intrinsic","extrinsic"), as.dist=TRUE){
+  #-------------------------------------------------------
+  # must be of 'riemdata' class
+  if (!inherits(input,"riemdata")){
+    stop("* rstat.pdist : the 'input' must be of 'riemdata' class. Use 'riemfactory' first to manage your data.")
+  }
+  # type checking
+  mytype  = match.arg(type)
+  # return
+  retdist = as.logical(as.dist)
+  
+  #-------------------------------------------------------
+  # compute
+  outdist = rclust_pdist(input, type=mytype)
+  if (retdist){
+    return(stats::as.dist(outdist))
+  } else {
+    return(outdist)
+  }
+}

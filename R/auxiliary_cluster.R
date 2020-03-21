@@ -84,7 +84,7 @@ rclust_pdist <- function(input, type=c("extrinsic","intrinsic")){
   mfdname = input$name
   distype = match.arg(type)
   
-  if (distype=="intrinsic"){
+  if (all(distype=="intrinsic")){
     output = cpp_distint(mfddata, mfdname)
   } else {
     output = cpp_distext(mfddata, mfdname)
@@ -97,7 +97,7 @@ rclust_pdist_cube <- function(datacube, mfdname, type=c("extrinsic","intrinsic")
   mfddata = datacube
   distype = match.arg(type)
   
-  if (distype=="intrinsic"){
+  if (all(distype=="intrinsic")){
     output = cpp_distint(mfddata, mfdname)
   } else {
     output = cpp_distext(mfddata, mfdname)
@@ -107,15 +107,16 @@ rclust_pdist_cube <- function(datacube, mfdname, type=c("extrinsic","intrinsic")
 # (04) rclust_pdist2      : pairwise intrinsic/extrinsic distances for two-set data
 #' @keywords internal
 #' @noRd
-rclust_pdist2 <- function(input, type=c("extrinsic","intrinsic")){
-  mfddata = rclust_stack3d(input)
-  mfdname = input$name
+rclust_pdist2 <- function(input1, input2, type=c("extrinsic","intrinsic")){
+  mfddata1 = rclust_stack3d(input1)
+  mfddata2 = rclust_stack3d(input2)
+  mfdname = input1$name
   distype = match.arg(type)
   
-  if (distype=="intrinsic"){
-    output = cpp_dist2int(mfddata, mfdname)
+  if (all(distype=="intrinsic")){
+    output = cpp_dist2int(mfddata1, mfddata2, mfdname)
   } else {
-    output = cpp_dist2ext(mfddata, mfdname)
+    output = cpp_dist2ext(mfddata1, mfddata2, mfdname)
   }
   return(output)
 }
@@ -123,7 +124,7 @@ rclust_pdist2 <- function(input, type=c("extrinsic","intrinsic")){
 #' @noRd
 rclust_pdist2_cube <- function(cube1, cube2, mfdname, type=c("extrinsic","intrinsic")){
   distype = match.arg(type)
-  if (distype=="intrinsic"){
+  if (all(distype=="intrinsic")){
     output = cpp_dist2int(cube1, cube2, mfdname)
   } else {
     output = cpp_dist2ext(cube1, cube2, mfdname)

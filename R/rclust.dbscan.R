@@ -4,7 +4,7 @@
 #' as long as we have concept of dissimilarity. We adopt \code{dbscan} algorithm 
 #' by \pkg{dbscan} package. See \code{\link[dbscan]{dbscan}} for more details.
 #' 
-#' @param input a S3 object of \code{riemdata} class. See \code{\link{riemfactory}} for more details.
+#' @param input a S3 object of \code{riemdata} class. See \code{\link[RiemBase]{riemfactory}} for more details.
 #' @param type type of distance, either \code{"intrinsic"} or \code{"extrinsic"}.
 #' @param eps size of the epsilon neighborhood.
 #' @param minPts number of minimum points in the eps region (for core points). Default is 5 points.
@@ -45,7 +45,8 @@
 #' pdist = stats::as.dist(RiemBase::rbase.pdist(data))
 #' dat2d = stats::cmdscale(pdist, k=2)
 #' 
-#' opar <- par(mfrow=c(1,2))
+#' opar <- par(no.readonly=TRUE)
+#' par(mfrow=c(1,2))
 #' plot(dat2d[,1], dat2d[,2], col=dbext$cluster, pch=19, main="extrinsic+dbscan")
 #' plot(dat2d[,1], dat2d[,2], col=dbint$cluster, pch=19, main="intrinsic+dbscan")
 #' par(opar)

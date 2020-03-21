@@ -13,7 +13,7 @@ rclust.hclust(
 )
 }
 \arguments{
-\item{input}{a S3 object of \code{riemdata} class. See \code{\link{riemfactory}} for more details.}
+\item{input}{a S3 object of \code{riemdata} class. See \code{\link[RiemBase]{riemfactory}} for more details.}
 
 \item{type}{type of distance, either \code{"intrinsic"} or \code{"extrinsic"}.}
 
@@ -55,7 +55,8 @@ hext <- rclust.hclust(data, type="extrinsic")
 hint <- rclust.hclust(data, type="intrinsic")
 
 ## visualize
-opar <- par(mfrow=c(1,2), pty="s")
+opar <- par(no.readonly=TRUE)
+par(mfrow=c(1,2), pty="s")
 plot(hext, main="extrinsic+single")
 plot(hint, main="intrinsic+single")
 par(opar)

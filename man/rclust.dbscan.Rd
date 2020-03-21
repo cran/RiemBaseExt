@@ -7,7 +7,7 @@
 rclust.dbscan(input, type = c("extrinsic", "intrinsic"), eps, minPts = 5, ...)
 }
 \arguments{
-\item{input}{a S3 object of \code{riemdata} class. See \code{\link{riemfactory}} for more details.}
+\item{input}{a S3 object of \code{riemdata} class. See \code{\link[RiemBase]{riemfactory}} for more details.}
 
 \item{type}{type of distance, either \code{"intrinsic"} or \code{"extrinsic"}.}
 
@@ -58,7 +58,8 @@ dbint <- rclust.dbscan(data, eps=0.5, type="intrinsic")
 pdist = stats::as.dist(RiemBase::rbase.pdist(data))
 dat2d = stats::cmdscale(pdist, k=2)
 
-opar <- par(mfrow=c(1,2))
+opar <- par(no.readonly=TRUE)
+par(mfrow=c(1,2))
 plot(dat2d[,1], dat2d[,2], col=dbext$cluster, pch=19, main="extrinsic+dbscan")
 plot(dat2d[,1], dat2d[,2], col=dbint$cluster, pch=19, main="intrinsic+dbscan")
 par(opar)

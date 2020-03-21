@@ -6,7 +6,7 @@
 #' between two points on manifold \eqn{\mathcal{M}}. It uses a gradient descent method 
 #' with a backtracking search rule for updating.
 #' 
-#' @param input a S3 object of \code{riemdata} class. See \code{\link{riemfactory}} for more details.
+#' @param input a S3 object of \code{riemdata} class. See \code{\link[RiemBase]{riemfactory}} for more details.
 #' @param type type of distance, either \code{"intrinsic"} or \code{"extrinsic"}.
 #' @param int.eps stopping criterion for the norm of gradient.
 #' @param parallel a flag for enabling parallel computation.

@@ -1,4 +1,10 @@
 # News for Package RiemBaseExt
+
+### Changes in version 0.1.2
+  * Following functions are added:
+    - `rstat.pdist` for pairwise distance computation, and
+    - `rstat.pdist2` for pairwise distance computation between two sets of data.
+
 ### Changes in version 0.1.1
   * Removed dependence on `TDA` package due to inherited error.
   

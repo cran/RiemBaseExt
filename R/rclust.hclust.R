@@ -4,7 +4,7 @@
 #' as long as we have concept of dissimilarity. We adopt \code{hclust} algorithm 
 #' by \pkg{fastcluster} package. See \code{\link[fastcluster]{hclust}} for more details.
 #' 
-#' @param input a S3 object of \code{riemdata} class. See \code{\link{riemfactory}} for more details.
+#' @param input a S3 object of \code{riemdata} class. See \code{\link[RiemBase]{riemfactory}} for more details.
 #' @param type type of distance, either \code{"intrinsic"} or \code{"extrinsic"}.
 #' @param method the agglomeration method to be used. This must be (an unambiguous abbreviation of) one of \code{"single"},
 #' \code{"complete"}, \code{"average"}, \code{"mcquitty"}, \code{"ward.D"}, \code{"ward.D2"}, \code{"centroid"} or \code{"median"}.
@@ -37,7 +37,8 @@
 #' hint <- rclust.hclust(data, type="intrinsic")
 #' 
 #' ## visualize
-#' opar <- par(mfrow=c(1,2), pty="s")
+#' opar <- par(no.readonly=TRUE)
+#' par(mfrow=c(1,2), pty="s")
 #' plot(hext, main="extrinsic+single")
 #' plot(hint, main="intrinsic+single")
 #' par(opar)

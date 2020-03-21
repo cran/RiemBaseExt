@@ -4,7 +4,7 @@
 #' as long as we have concept of dissimilarity. We adopt \code{pam} algorithm 
 #' by \pkg{cluster} package. See \code{\link[cluster]{pam}} for more details.
 #' 
-#' @param input a S3 object of \code{riemdata} class. See \code{\link{riemfactory}} for more details.
+#' @param input a S3 object of \code{riemdata} class. See \code{\link[RiemBase]{riemfactory}} for more details.
 #' @param k the number of clusters.
 #' @param type type of distance, either \code{"intrinsic"} or \code{"extrinsic"}.
 #' 
@@ -39,7 +39,8 @@
 #' pdist = stats::as.dist(RiemBase::rbase.pdist(data))
 #' dat2d = stats::cmdscale(pdist, k=2)
 #' 
-#' opar <- par(mfrow=c(1,3))
+#' opar <- par(no.readonly=TRUE)
+#' par(mfrow=c(1,3))
 #' plot(dat2d[,1], dat2d[,2], col=k2$clustering, pch=19, main="k=2")
 #' plot(dat2d[,1], dat2d[,2], col=k3$clustering, pch=19, main="k=3")
 #' plot(dat2d[,1], dat2d[,2], col=k4$clustering, pch=19, main="k=4")
